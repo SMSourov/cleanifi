@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "419185066719",
+    "project_id": "cleanifi-project",
+    "storage_bucket": "cleanifi-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419185066719:android:e55c9e866d903b2a549f6a",
+        "android_client_info": {
+          "package_name": "nsu.summer2023.project.cleanifi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419185066719-3e47ahide09k02mei46uas7an0quckud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF-PIztodZLzj8u_fgMXlGRvgcWeIZmmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419185066719-3e47ahide09k02mei46uas7an0quckud.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
