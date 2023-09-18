@@ -8,6 +8,6 @@ Any type of modification of this code is prohibited for all other than the membe
 
 Team members:
 - 
-Farzana Erin 2021672042
-Sk. Mashrur Sourov 2021672642
-Jannatul Ferdous Prome 2021770642
+- Farzana Erin 2021672042
+- Sk. Mashrur Sourov 2021672642
+- Jannatul Ferdous Prome 2021770642
