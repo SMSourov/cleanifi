@@ -38,9 +38,9 @@ class HomePage extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
-            // print(FirebaseAuth.instance.currentUser);
+            devtools.log(FirebaseAuth.instance.currentUser.toString());
             final user = FirebaseAuth.instance.currentUser;
-            // print(user);
+            devtools.log(user.toString());
             if (user != null) {
               if (user.emailVerified) {
                 return const NotesView();
