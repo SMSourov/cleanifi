@@ -32,7 +32,8 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login"),
+      appBar: AppBar(
+        title: const Text("Login"),
       ),
       body: Column(
         children: [
@@ -57,12 +58,20 @@ class _LoginViewState extends State<LoginView> {
           ),
           TextButton(
             onPressed: () async {
-              try {
                 final email = _email.text;
                 final password = _password.text;
-                final userCredential = await FirebaseAuth.instance
-                    .signInWithEmailAndPassword(email: email, password: password);
-                devtools.log(userCredential.toString());
+                
+              try {
+                // final userCredential =
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
+                // devtools.log(userCredential.toString());
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  "/notes/",
+                  (route) => false,
+                );
               } on FirebaseAuthException catch (e) {
                 if (e.code == "user-not-found") {
                   devtools.log("The user was not found. That's all we know.");
@@ -82,8 +91,10 @@ class _LoginViewState extends State<LoginView> {
           ),
           TextButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil("/register/", (route) => false);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  "/register/",
+                  (route) => false,
+                );
               },
               child: const Text("    Not registered?\nCreate account now"))
         ],
