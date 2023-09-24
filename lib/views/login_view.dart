@@ -1,7 +1,7 @@
 import 'package:cleanifi/constants/routes.dart';
+import 'package:cleanifi/utilities/show_error_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as devtools show log;
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -59,12 +59,12 @@ class _LoginViewState extends State<LoginView> {
           ),
           TextButton(
             onPressed: () async {
-                final email = _email.text;
-                final password = _password.text;
-                
+              final email = _email.text;
+              final password = _password.text;
+
               try {
                 // final userCredential =
-                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                await FirebaseAuth.instance.signInWithEmailAndPassword(
                   email: email,
                   password: password,
                 );
@@ -75,14 +75,32 @@ class _LoginViewState extends State<LoginView> {
                 );
               } on FirebaseAuthException catch (e) {
                 if (e.code == "user-not-found") {
-                  devtools.log("The user was not found. That's all we know.");
+                  await showErrorDialog(
+                    context,
+                    "The user was not found.\nThat's all we know.",
+                  );
+                  // devtools.log("The user was not found. That's all we know.");
                 } else if (e.code == "wrong-password") {
-                  devtools.log("Incorrect password.");
+                  // devtools.log("Incorrect password.");
+                  await showErrorDialog(
+                    context,
+                    "Incorrect password",
+                  );
                 } else {
-                  devtools.log("Something else happend.");
-                  devtools.log(e.code);
+                  // devtools.log("Something else happend.");
+                  // devtools.log(e.code);
+                  await showErrorDialog(
+                    context,
+                    "Error: ${e.code}",
+                  );
                 }
-              } //catch (e) {
+              }
+
+              catch (e) {
+                await showErrorDialog(context, e.toString(),);
+              }
+
+               //catch (e) {
               //   print("Something bad happend.");
               //   print(e);
               //   print(e.runtimeType);
@@ -103,3 +121,4 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
+
