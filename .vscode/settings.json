@@ -1,3 +1,5 @@
 {
-    "terminal.integrated.fontSize": 14
+    "terminal.integrated.fontSize": 14,
+    "editor.fontFamily": "'Cascadia Code PL', Consolas, 'Courier New', monospace, 'Noto Sans Bengali'",
+    "editor.fontSize": 14
 }
