@@ -1,7 +1,7 @@
 import 'package:cleanifi/constants/routes.dart';
+import 'package:cleanifi/utilities/show_error_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as devtools show log;
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -33,7 +33,9 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Register"),),
+      appBar: AppBar(
+        title: const Text("Register"),
+      ),
       body: Column(
         children: [
           TextField(
@@ -60,30 +62,43 @@ class _RegisterViewState extends State<RegisterView> {
               final email = _email.text;
               final password = _password.text;
               try {
-                final userCredential = await FirebaseAuth.instance
-                    .createUserWithEmailAndPassword(
-                        email: email, password: password);
-                devtools.log(userCredential.toString());
+                await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
+                Navigator.of(context).pushNamed(verifyEmailRoute);
               } on FirebaseAuthException catch (e) {
                 if (e.code == "email-already-in-use") {
-                  devtools.log("Unable to register.");
-                  devtools.log("The given email is already registered.");
+                  await showErrorDialog(
+                    context,
+                    "An account is already registered with this email.",
+                  );
                 } else if (e.code == "weak-password") {
-                  devtools.log("Password is not accepted");
-                  devtools.log("Use a stronger password.");
+                  await showErrorDialog(
+                    context,
+                    "Week password",
+                  );
                 } else if (e.code == "invalid-email") {
-                  devtools.log("The given email is not an email.");
+                  await showErrorDialog(
+                    context,
+                    "Enter a valid email address.",
+                  );
                 } else {
-                  devtools.log(e.code);
+                  await showErrorDialog(
+                    context,
+                    e.toString(),
+                  );
                 }
               }
             },
             child: const Text("Register"),
           ),
-          TextButton(onPressed: () {
-            Navigator.of(context)
-                  .pushNamedAndRemoveUntil(loginRoute, (route) => false);
-          }, child: const Text("Already registered?\n        Login here!"))
+          TextButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(loginRoute, (route) => false);
+              },
+              child: const Text("Already registered?\n        Login here!"))
         ],
       ),
     );

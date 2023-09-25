@@ -94,13 +94,14 @@ class _LoginViewState extends State<LoginView> {
                     "Error: ${e.code}",
                   );
                 }
+              } catch (e) {
+                await showErrorDialog(
+                  context,
+                  e.toString(),
+                );
               }
 
-              catch (e) {
-                await showErrorDialog(context, e.toString(),);
-              }
-
-               //catch (e) {
+              //catch (e) {
               //   print("Something bad happend.");
               //   print(e);
               //   print(e.runtimeType);
@@ -121,4 +122,3 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
-
