@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:cleanifi/constants/routes.dart';
 import 'package:cleanifi/firebase_options.dart';
 import 'package:cleanifi/views/login_view.dart';
