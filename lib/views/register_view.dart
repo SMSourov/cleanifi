@@ -34,10 +34,11 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Register"),
+        title: const Text("CLEANIFI REGISTER"),
       ),
       body: Column(
         children: [
+          const Text("\n\n"),
           TextField(
             controller: _email,
             obscureText: false,

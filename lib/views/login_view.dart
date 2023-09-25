@@ -34,10 +34,11 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
+        title: const Text("CLEANIFI LOGIN"),
       ),
       body: Column(
         children: [
+          const Text("LEAVE THE CLEANING IN OUR HANDS AND DO YOUR WORK\n\n"),
           TextField(
             controller: _email,
             obscureText: false,
