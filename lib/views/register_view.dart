@@ -79,7 +79,7 @@ class _RegisterViewState extends State<RegisterView> {
                 } else if (e.code == "weak-password") {
                   await showErrorDialog(
                     context,
-                    "Week password",
+                    "Weak password",
                   );
                 } else if (e.code == "invalid-email") {
                   await showErrorDialog(
