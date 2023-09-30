@@ -92,6 +92,8 @@ class _RegisterViewState extends State<RegisterView> {
                     e.toString(),
                   );
                 }
+              } catch (e) {
+                showErrorDialog(context, e.toString());
               }
             },
             child: const Text("Register"),
