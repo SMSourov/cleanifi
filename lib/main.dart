@@ -1,5 +1,4 @@
 import 'package:cleanifi/constants/routes.dart';
-import 'package:cleanifi/firebase_options.dart';
 import 'package:cleanifi/services/auth/auth_service.dart';
 import 'package:cleanifi/views/login_view.dart';
 import 'package:cleanifi/views/notes_view.dart';
@@ -39,10 +38,10 @@ class HomePage extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
-            final user = FirebaseAuth.instance.currentUser;
+            final user = AuthService.firebase().currentUser;
             devtools.log(user.toString());
             if (user != null) {
-              if (user.emailVerified) {
+              if (user.isEmailVerified) {
                 return const NotesView();
                 // Text("Email is verified");
               } else {

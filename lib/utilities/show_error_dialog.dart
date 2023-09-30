@@ -16,7 +16,7 @@ Future<void> showErrorDialog(
               Navigator.of(context).pop();
             },
             child: const Text("OK"),
-          )
+          ),
         ],
       );
     },
